@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryVideoController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
+use App\Mail\VerifyEmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::post('/videos/{video}', [VideoController::class,'update'])->name('videos.
 
 // category routes 
 Route::get('/categories/{category}/videos', [CategoryVideoController::class, 'index'])->name('videos.index');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,3 +41,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('/email', function () {
+    Mail::to('parsa@gmail.com')->send(new VerifyEmail);
+});

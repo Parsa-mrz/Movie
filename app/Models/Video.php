@@ -11,12 +11,8 @@ class Video extends Model
     use HasFactory;
     protected $fillable = ['name', 'slug', 'description', 'thumbnail', 'length', 'url', 'category_id'];
 
-    // ---- video time accessor ------
-    public function getLengthInHumanAttribute()
-    {
-        return gmdate("H:i:s", $this->value);
-    }
     // ----- video created time accessor ---------
+    
     public function getCreatedAtAttribute($value)
     {
         return (new Verta($value))->formatDifference();
@@ -49,5 +45,18 @@ class Video extends Model
     public function getCategorySlugAttribute()
     {
         return $this->category?->slug;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function getOwnerNameAttribute()
+    {
+        return $this->user?->name;
+    }
+    public function getOwnerGravatarAttribute()
+    {
+        return $this->user?->gravatar;
     }
 }

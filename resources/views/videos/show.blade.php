@@ -14,9 +14,12 @@
                         type="video/mp4">
                 </video>
             </div><!-- // video-code -->
+            @auth
             <div class="edit">
                 <a href="{{route('videos.edit',$video->slug)}}"><i class="fa fa-pencil"></i></a>
             </div>
+            @endauth
+            
             <div class="desc">
                 <p>
                     {{$video->description}}
@@ -48,10 +51,10 @@
             <!-- Chanels Item -->
             <div class="chanel-item">
                 <div class="chanel-thumb">
-                    <a href="#"><img src="/demo_img/ch-1.jpg" alt=""></a>
+                    <a href="#"><img src="{{$video->owner_gravatar}}" alt=""></a>
                 </div>
                 <div class="chanel-info">
-                    <a class="title" href="#">داود طاهری</a>
+                    <a class="title" href="#">{{$video->owner_name}}</a>
                     <span class="subscribers">436,414 ویدیو</span>
                 </div>
                 <a href="#" class="subscribe">مشاهده همه ویدیوهای داوود طاهری</a>

@@ -10,6 +10,8 @@ return [
         'length' => 'مدت زمان',
         'slug' => 'نام یکتا',
         'url' => 'آدرس ویدیو',
+        'email' => 'ایمیل',
+        'password' => 'رمز عبور',
         'thumbnail' => 'تصویر بندانگشتی',
         'description' => 'توضیحات',
         'category_id' => 'دسته بندی ویدیو'
